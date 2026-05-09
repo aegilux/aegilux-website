@@ -1,4 +1,4 @@
-import { Shield, Mail, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -9,7 +9,13 @@ const Footer = () => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <Shield className="w-6 h-6 text-primary drop-shadow-[0_0_6px_hsl(var(--neon-blue)/0.8)]" />
+              <img
+                src="/aegilux-logo.svg"
+                alt="Aegilux"
+                className="w-7 h-7 drop-shadow-[0_0_6px_hsl(var(--neon-blue)/0.8)]"
+                width="28"
+                height="28"
+              />
               <span className="font-heading text-lg font-bold">
                 aegi<span className="text-primary neon-text">lux</span>
               </span>

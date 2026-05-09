@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Shield } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "Problem", href: "#problems" },
@@ -30,8 +30,14 @@ const Navbar = () => {
       }`}
     >
       <nav className="section-container flex items-center justify-between h-16 sm:h-20">
-        <a href="#" className="flex items-center gap-2 group">
-          <Shield className="w-7 h-7 text-primary group-hover:drop-shadow-[0_0_10px_hsl(var(--neon-blue)/0.9)] transition-all" />
+        <a href="#" className="flex items-center gap-2 group" aria-label="Aegilux home">
+          <img
+            src="/aegilux-logo.svg"
+            alt="Aegilux"
+            className="w-8 h-8 group-hover:drop-shadow-[0_0_10px_hsl(var(--neon-blue)/0.9)] transition-all"
+            width="32"
+            height="32"
+          />
           <span className="font-heading text-lg font-bold text-foreground">
             aegi<span className="text-primary neon-text">lux</span>
           </span>
