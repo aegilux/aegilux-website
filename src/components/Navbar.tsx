@@ -32,7 +32,7 @@ const Navbar = () => {
       <nav className="section-container flex items-center justify-between h-16 sm:h-20">
         <a href="#" className="flex items-center gap-2 group" aria-label="Aegilux home">
           <img
-            src="/aegilux-logo.svg"
+            src="/aegilux-logo.svg?v=2"
             alt="Aegilux"
             className="w-8 h-8 group-hover:drop-shadow-[0_0_10px_hsl(var(--neon-blue)/0.9)] transition-all"
             width="32"

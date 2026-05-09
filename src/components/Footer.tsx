@@ -10,7 +10,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <img
-                src="/aegilux-logo.svg"
+                src="/aegilux-logo.svg?v=2"
                 alt="Aegilux"
                 className="w-7 h-7 drop-shadow-[0_0_6px_hsl(var(--neon-blue)/0.8)]"
                 width="28"
