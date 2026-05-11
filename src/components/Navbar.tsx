@@ -1,24 +1,25 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-
-const navLinks = [
-  { label: "Problem", href: "#problems" },
-  { label: "How We Operate", href: "#how-we-operate" },
-  { label: "Services", href: "#services" },
-  { label: "Results", href: "#results" },
-  { label: "Pricing", href: "#pricing" },
-];
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
+
+  const isActive = (path: string) =>
+    location.pathname === path || location.pathname.startsWith(path + "/");
 
   return (
     <motion.header
@@ -30,7 +31,7 @@ const Navbar = () => {
       }`}
     >
       <nav className="section-container flex items-center justify-between h-16 sm:h-20">
-        <a href="#" className="flex items-center gap-2 group" aria-label="Aegilux home">
+        <Link to="/" className="flex items-center gap-2 group" aria-label="Aegilux home">
           <img
             src="/aegilux-logo.svg?v=2"
             alt="Aegilux"
@@ -41,26 +42,58 @@ const Navbar = () => {
           <span className="font-heading text-lg font-bold text-foreground">
             aegi<span className="text-primary neon-text">lux</span>
           </span>
-        </a>
+        </Link>
 
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-muted-foreground hover:text-primary transition-colors text-sm font-mono-cyber tracking-wider"
-            >
-              {link.label}
-            </a>
-          ))}
-          <a href="#cta" className="glow-button text-sm py-2 px-6">
-            Book a Snapshot
-          </a>
+        <div className="hidden md:flex items-center gap-6">
+          <Link
+            to="/cloud-security"
+            className={`text-sm font-mono-cyber tracking-wider transition-colors ${
+              isActive("/cloud-security")
+                ? "text-primary"
+                : "text-muted-foreground hover:text-primary"
+            }`}
+          >
+            Cloud Security
+          </Link>
+          <Link
+            to="/ai"
+            className={`text-sm font-mono-cyber tracking-wider transition-colors ${
+              isActive("/ai")
+                ? "text-primary"
+                : "text-muted-foreground hover:text-primary"
+            }`}
+          >
+            AI Chief of Staff
+          </Link>
+          <Link
+            to="/about"
+            className={`text-sm font-mono-cyber tracking-wider transition-colors ${
+              isActive("/about")
+                ? "text-primary"
+                : "text-muted-foreground hover:text-primary"
+            }`}
+          >
+            About
+          </Link>
+          <Link
+            to="/faq"
+            className={`text-sm font-mono-cyber tracking-wider transition-colors ${
+              isActive("/faq")
+                ? "text-primary"
+                : "text-muted-foreground hover:text-primary"
+            }`}
+          >
+            FAQ
+          </Link>
+          <Link to="/contact" className="glow-button text-sm py-2 px-6">
+            Book a call
+          </Link>
         </div>
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="md:hidden text-foreground"
+          aria-label="Toggle menu"
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -74,20 +107,32 @@ const Navbar = () => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden glass-strong border-t border-border"
           >
-            <div className="section-container py-4 flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <a
+            <div className="section-container py-4 flex flex-col gap-3">
+              {[
+                { label: "Cloud Security", href: "/cloud-security" },
+                { label: "AI Chief of Staff", href: "/ai" },
+                { label: "About", href: "/about" },
+                { label: "FAQ", href: "/faq" },
+                { label: "Privacy Act 2026", href: "/privacy-act-2026" },
+              ].map((link) => (
+                <Link
                   key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="text-muted-foreground hover:text-primary transition-colors py-2 font-mono-cyber tracking-wider"
+                  to={link.href}
+                  className={`py-2 font-mono-cyber tracking-wider transition-colors ${
+                    isActive(link.href)
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-primary"
+                  }`}
                 >
                   &gt; {link.label}
-                </a>
+                </Link>
               ))}
-              <a href="#cta" onClick={() => setMobileOpen(false)} className="glow-button text-center text-sm py-3">
-                Book a Snapshot
-              </a>
+              <Link
+                to="/contact"
+                className="glow-button text-center text-sm py-3 mt-1"
+              >
+                Book a call
+              </Link>
             </div>
           </motion.div>
         )}
