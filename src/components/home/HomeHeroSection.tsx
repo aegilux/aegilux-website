@@ -36,7 +36,9 @@ const HomeHeroSection = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="font-heading text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6"
         >
-          Compliance + AI
+          Cloud Security +
+          <br />
+          AI Chief of Staff
           <br />
           for{" "}
           <span className="gradient-text neon-text">AU regulated SMBs</span>
@@ -48,9 +50,10 @@ const HomeHeroSection = () => {
           transition={{ duration: 0.8, delay: 0.7 }}
           className="text-muted-foreground text-lg sm:text-xl max-w-2xl mx-auto mb-10"
         >
-          Two service lines under one roof. Essential Eight on AWS for cloud
-          security. An AI Chief of Staff for compliance workflows. Built before
-          the 10&nbsp;December&nbsp;2026 ADM transparency deadline.
+          Two service lines under one roof. We run Essential Eight on AWS
+          Sydney, and we build AI Chiefs of Staff that ship with the PIA
+          your security questionnaire needs &mdash; before the
+          10&nbsp;December&nbsp;2026 ADM transparency deadline.
         </motion.p>
 
         <motion.div
